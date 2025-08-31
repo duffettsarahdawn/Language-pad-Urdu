@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn Sign Language: Basic Words</title>
+  <style>
+    body {
+      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      background: #f8fafd;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 24px 16px 32px 16px;
+    }
+    h1 {
+      text-align: center;
+      color: #0066cc;
+      margin-bottom: 10px;
+    }
+    .sign-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .sign-card {
+      background: #e6f0fa;
+      border-radius: 12px;
+      width: 190px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 16px 8px 18px 8px;
+      transition: transform 0.12s;
+    }
+    .sign-card:hover {
+      transform: scale(1.04);
+      background: #d3e7f9;
+    }
+    .sign-img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      background: #fff;
+      border: 2px solid #b3d1ee;
+    }
+    .word-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    .english-word, .urdu-word {
+      font-size: 1.25em;
+      font-weight: bold;
+      margin: 5px 0 0 0;
+    }
+    .urdu-word {
+      font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', 'Arial', serif;
+      color: #005b4f;
+      direction: rtl;
+      font-size: 1.22em;
+    }
+    .speak-btn {
+      background: #7ed957;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      color: white;
+      font-size: 1.1em;
+      margin: 2px 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .18s;
+    }
+    .speak-btn:active { background: #53b32d; }
+    @media (max-width: 600px) {
+      .sign-card { width: 100%; }
+      .sign-grid { flex-direction: column; gap: 16px; }
+      .container { padding: 12px 2px 16px 2px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Learn Basic Sign Language Words</h1>
+    <div class="sign-grid">
+
+      <!-- Word Cards -->
+      <div class="sign-card">
+        <img src="https://www.signingsavvy.com/media/mp4-ld/1/11.mp4.jpg" alt="Eat sign" class="sign-img" />
+        <div class="word-row">
+          <span class="english-word">Eat</span>
+          <button class="speak-btn" onclick="speak('Eat', 'en')">🔉</button>
+        </div>
+        <div class="word-row">
+          <span class="urdu-word">کھانا</span>
+          <button class="speak-btn" onclick="speak('کھانا', 'ur')">🔉</button>
+        </div>
+      </div>
+
+      <div class="sign-card">
+        <img src="https://www.signingsavvy.com/media/mp4-ld/1/17.mp4.jpg" alt="Drink sign" class="sign-img" />
+        <div class="word-row">
+          <span class="english-word">Drink</span>
+          <button class="speak-btn" onclick="speak('Drink', 'en')">🔉</button>
+        </div>
+        <div class="word-row">
+          <span class="urdu-word">پینا</span>
+          <button class="speak-btn" onclick="speak('پینا', 'ur')">🔉</button>
+        </div>
+      </div>
+
+      <div class="sign-card">
+        <img src="https://www.signingsavvy.com/media/mp4-ld/8/8108.mp4.jpg" alt="Toilet sign" class="sign-img" />
+        <div class="word-row">
+          <span class="english-word">Toilet</span>
+          <button class="speak-btn" onclick="speak('Toilet', 'en')">🔉</button>
+        </div>
+        <div class="word-row">
+          <span class="urdu-word">ٹائلٹ</span>
+          <button class="speak-btn" onclick="speak('ٹائلٹ', 'ur')">🔉</button>
+        </div>
+      </div>
+
+      <div class="sign-card">
+        <img src="https://www.signingsavvy.com/media/mp4-ld/5/5135.mp4.jpg" alt="Help sign" class="sign-img" />
+        <div class="word-row">
+          <span class="english-word">Help</span>
+          <button class="speak-btn" onclick="speak('Help', 'en')">🔉</button>
+        </div>
+        <div class="word-row">
+          <span class="urdu-word">مدد</span>
+          <button class="speak-btn" onclick="speak('مدد', 'ur')">🔉</button>
+        </div>
+      </div>
+
+      <div class="sign-card">
+        <img src="https://www.signingsavvy.com/media/mp4-ld/3/3166.mp4.jpg" alt="Yes sign" class="sign-img" />
+        <div class="word-row">
+          <span class="english-word">Yes</span>
+          <button class="speak-btn" onclick="speak('Yes', 'en')">🔉</button>
+        </div>
+        <div class="word-row">
+          <span class="urdu-word">ہاں</span>
+          <button class="speak-btn" onclick="speak('ہاں', 'ur')">🔉</button>
+        </div>
+      </div>
+
+      <div class="sign-card">
+        <img src="https://www.signingsavvy.com/media/mp4-ld/3/3165.mp4.jpg" alt="No sign" class="sign-img" />
+        <div class="word-row">
+          <span class="english-word">No</span>
+          <button class="speak-btn" onclick="speak('No', 'en')">🔉</button>
+        </div>
+        <div class="word-row">
+          <span class="urdu-word">نہیں</span>
+          <button class="speak-btn" onclick="speak('نہیں', 'ur')">🔉</button>
+        </div>
+      </div>
+
+      <div class="sign-card">
+        <img src="https://www.signingsavvy.com/media/mp4-ld/5/5657.mp4.jpg" alt="Stop sign" class="sign-img" />
+        <div class="word-row">
+          <span class="english-word">Stop</span>
+          <button class="speak-btn" onclick="speak('Stop', 'en')">🔉</button>
+        </div>
+        <div class="word-row">
+          <span class="urdu-word">رک جاؤ</span>
+          <button class="speak-btn" onclick="speak('رک جاؤ', 'ur')">🔉</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    // Uses browser speech synthesis for both English and Urdu
+    function speak(text, lang) {
+      if (!('speechSynthesis' in window)) {
+        alert('Sorry, your browser does not support speech synthesis.');
+        return;
+      }
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = (lang === 'en') ? 'en-US' : 'ur-PK';
+
+      // Try to select a suitable voice
+      const voices = speechSynthesis.getVoices();
+      let selectedVoice = null;
+      for (const v of voices) {
+        if (v.lang === utter.lang) {
+          selectedVoice = v;
+          break;
+        }
+      }
+      if (selectedVoice) {
+        utter.voice = selectedVoice;
+      }
+      window.speechSynthesis.cancel(); // Stop any current speech
+      window.speechSynthesis.speak(utter);
+    }
+
+    // Preload voices for better UX
+    window.speechSynthesis.onvoiceschanged = () => {};
+  </script>
+</body>
+</html>
