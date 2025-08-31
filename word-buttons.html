@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Language Word Buttons</title>
+  <style>
+    .word-button {
+      display: inline-block;
+      margin: 20px;
+      padding: 16px;
+      border: 2px solid #444;
+      border-radius: 12px;
+      background: #f7f7fa;
+      cursor: pointer;
+      width: 200px;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+    .word-button:hover {
+      box-shadow: 0 0 12px #aaa;
+    }
+    .representation {
+      margin-top: 12px;
+      display: none;
+    }
+    .word-button.active .representation {
+      display: block;
+    }
+    .sign-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin: 8px 0;
+    }
+    .lang-label {
+      font-weight: bold;
+      margin-top: 8px;
+    }
+    .audio-btn {
+      margin-left: 6px;
+      cursor: pointer;
+      background: #eee;
+      border: none;
+      border-radius: 50%;
+      padding: 5px 8px;
+      font-size: 18px;
+      vertical-align: middle;
+    }
+    .urdu-text {
+      font-family: 'Noto Nastaliq Urdu', 'Arial', serif;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Word Buttons: English, Urdu, Sign Language</h2>
+  <div id="words-container"></div>
+
+  <script>
+    // Replace 'SIGN_IMAGE_PATH', 'EN_AUDIO', 'UR_AUDIO', and 'URDU_TEXT' with real files/text later
+    const words = [
+      {
+        english: "eat",
+        urdu: "کھانا", // khana
+        signImage: "signs/eat.png",
+        englishAudio: "audio/eat_en.mp3",
+        urduAudio: "audio/eat_ur.mp3"
+      },
+      {
+        english: "drink",
+        urdu: "پینا", // peena
+        signImage: "signs/drink.png",
+        englishAudio: "audio/drink_en.mp3",
+        urduAudio: "audio/drink_ur.mp3"
+      },
+      {
+        english: "yes",
+        urdu: "ہاں", // haan
+        signImage: "signs/yes.png",
+        englishAudio: "audio/yes_en.mp3",
+        urduAudio: "audio/yes_ur.mp3"
+      },
+      {
+        english: "no",
+        urdu: "نہیں", // nahi
+        signImage: "signs/no.png",
+        englishAudio: "audio/no_en.mp3",
+        urduAudio: "audio/no_ur.mp3"
+      },
+      {
+        english: "help",
+        urdu: "مدد", // madad
+        signImage: "signs/help.png",
+        englishAudio: "audio/help_en.mp3",
+        urduAudio: "audio/help_ur.mp3"
+      },
+      {
+        english: "play",
+        urdu: "کھیلنا", // khelna
+        signImage: "signs/play.png",
+        englishAudio: "audio/play_en.mp3",
+        urduAudio: "audio/play_ur.mp3"
+      },
+      {
+        english: "stop",
+        urdu: "رک جاؤ", // ruk jao
+        signImage: "signs/stop.png",
+        englishAudio: "audio/stop_en.mp3",
+        urduAudio: "audio/stop_ur.mp3"
+      },
+      {
+        english: "toilet",
+        urdu: "ٹوائلٹ", // toilet
+        signImage: "signs/toilet.png",
+        englishAudio: "audio/toilet_en.mp3",
+        urduAudio: "audio/toilet_ur.mp3"
+      }
+    ];
+
+    const container = document.getElementById('words-container');
+
+    words.forEach((item, idx) => {
+      const btn = document.createElement('div');
+      btn.className = 'word-button';
+      btn.innerHTML = `
+        <strong>${item.english.charAt(0).toUpperCase() + item.english.slice(1)}</strong>
+        <div class="representation">
+          <div>
+            <img class="sign-img" src="${item.signImage}" alt="Sign: ${item.english}" onerror="this.onerror=null;this.src='signs/placeholder.png';" />
+            <div class="lang-label">Sign Language</div>
+          </div>
+          <div>
+            <span class="lang-label">English:</span>
+            <span>${item.english}</span>
+            <button class="audio-btn" onclick="document.getElementById('en-audio-${idx}').play(); event.stopPropagation();" title="Play English Audio">🔊</button>
+            <audio id="en-audio-${idx}" src="${item.englishAudio}"></audio>
+          </div>
+          <div>
+            <span class="lang-label">Urdu:</span>
+            <span class="urdu-text">${item.urdu}</span>
+            <button class="audio-btn" onclick="document.getElementById('ur-audio-${idx}').play(); event.stopPropagation();" title="Play Urdu Audio">🔊</button>
+            <audio id="ur-audio-${idx}" src="${item.urduAudio}"></audio>
+          </div>
+        </div>
+      `;
+      btn.addEventListener('click', function() {
+        // Collapse other buttons
+        document.querySelectorAll('.word-button').forEach(el => el.classList.remove('active'));
+        // Expand this one
+        this.classList.add('active');
+      });
+      container.appendChild(btn);
+    });
+  </script>
+</body>
+</html>
